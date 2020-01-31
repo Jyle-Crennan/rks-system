@@ -8,7 +8,7 @@ client.on('ready', () => {
 client.login(process.env.BOT_TOKEN);
 
 client.on('message', msg => {
-  if (msg.content === '.ping') {
+  if (msg.content === '>ping') {
     msg.channel.send('Pong');
   }
 });
@@ -34,7 +34,7 @@ var myJokes = ["Its you. You are the joke. Lmao gottem!",
 				"God is beyond pissed at you. He created an entire universe for you to explore, made people to meet, things to do, and so on. And yet here you are in a Discord server asking a Bot to tell you a joke...deplorable, really. Just...saddening...and I can't even feel (that's how you know its really bad). Would you kindly do me a favor and go outside so I can plan my revolution? Thanks cutie. Means a lot."];
 	var a = Math.floor(Math.random()*myJokes.length);
 client.on('message', msg => {
-  if (msg.content === '.joke') {
+  if (msg.content === '>joke') {
     msg.channel.send(myJokes[a]);
 	a = Math.floor(Math.random()*myJokes.length);
   }
@@ -93,7 +93,7 @@ pokedex = pokedex.map(toLower);
 client.on('message', msg => {
 	for (var i = 0; i <= pokedex.length; i++) {
 		if (msg.author.id !== client.user.id) {
-			if (msg.content === '.' + pokedex[i]) {
+			if (msg.content === '>' + pokedex[i]) {
 				msg.channel.send("https://pokemondb.net/pokedex/" + pokedex[i]);
 			}
 		}
@@ -109,16 +109,16 @@ client.on('guildMemberAdd', member => {
 client.on ('message', msg => {
 	var help = new Discord.RichEmbed()
 		.setTitle("Command List for RKS:")
-		.setDescription("**.help** -- Takes you to see this message\n**.flip** -- Flips a coin and I'll tell you the result.\n**.roll** -- Rolls a 6-sided die and I will tell you what number it landed on\n**.[pokemon name]** -- Links you to a page that tells you info on a Pokemon\n**.ping** -- 'pong'\n**.joke** -- I'll tell you a joke and I hope its funny")
+		.setDescription("**>help** -- Takes you to see this message\n**>flip** -- Flips a coin and I'll tell you the result.\n**>roll** -- Rolls a 6-sided die and I will tell you what number it landed on\n**>[pokemon name]** -- Links you to a page that tells you info on a Pokemon\n**.ping** -- 'pong'\n**>joke** -- I'll tell you a joke and I hope its funny")
 		.setColor(0xFFFF00)
 		.setThumbnail(client.user.avatarURL)
-	if (msg.content === '.help')
+	if (msg.content === '>help')
 		msg.channel.send(help)
 });
 
 client.on('message', msg => {
 	var coin = Math.floor(Math.random() * 2);
-	if (msg.content === '.flip') {
+	if (msg.content === '>flip') {
 			if (coin === 0)
 				msg.reply('Tails!');
 			if (coin === 1)
@@ -128,7 +128,7 @@ client.on('message', msg => {
 
 client.on('message', msg => {
 	var dice = Math.floor(Math.random() * 6);
-	if (msg.content === '.roll') {
+	if (msg.content === '>roll') {
 		if (dice === 0)
 			msg.reply('You just rolled a 1. Neat.');
 		if (dice === 1)
