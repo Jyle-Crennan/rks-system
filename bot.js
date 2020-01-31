@@ -109,7 +109,7 @@ client.on('guildMemberAdd', member => {
 client.on ('message', msg => {
 	var help = new Discord.RichEmbed()
 		.setTitle("Command List for RKS:")
-		.setDescription("**>help** -- Takes you to see this message\n**>flip** -- Flips a coin and I'll tell you the result.\n**>roll** -- Rolls a 6-sided die and I will tell you what number it landed on\n**>[pokemon name]** -- Links you to a page that tells you info on a Pokemon\n**.ping** -- 'pong'\n**>joke** -- I'll tell you a joke and I hope its funny")
+		.setDescription("**>help** -- Takes you to see this message\n**>flip** -- Flips a coin and I'll tell you the result.\n**>roll** -- Rolls a 6-sided die and I will tell you what number it landed on\n**>[pokemon name]** -- Links you to a page that tells you info on a Pokemon\n**>ping** -- 'Pong'\n**>joke** -- I'll tell you a joke and I hope its funny")
 		.setColor(0xFFFF00)
 		.setThumbnail(client.user.avatarURL)
 	if (msg.content === '>help')
@@ -142,4 +142,17 @@ client.on('message', msg => {
 		if (dice === 5)
 			msg.reply('You just rolled a 6. Fantastic!');
 	}
+});
+
+client.on('message', msg => {
+  let blacklist = new Array('Nigger', 'Nigga', 'Nogger','Nagger', 'Nugger', 'Negger', 'Nig', 'Nikker', 'Nixxer'); //list of n-bombs
+  let foundInText = false; //default text in messages (i.e. not an n-bomb)
+  for (var i in blacklist) { //goes through each n-bomb in the list
+    if (msg.content.toLowerCase().includes(blacklist[i].toLowerCase())) //if the message has one in it
+      foundInText = true; //n-bomb confirmed
+  }
+  if (foundInText) { //if n-bomb confirmed
+    msg.delete(); //gets rid of n-bomb message
+    msg.reply('Whoops! Try again, dumbass!'); //profit
+  }
 });
