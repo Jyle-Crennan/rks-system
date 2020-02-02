@@ -145,14 +145,17 @@ client.on('message', msg => {
 });
 
 client.on('message', msg => {
-  let blacklist = new Array('Nigger', 'Nigga', 'Nogger','Nagger', 'Nugger', 'Negger', 'Nig', 'Nikker', 'Nixxer'); //list of n-bombs
+  let blacklist = new Array('Nigger', 'Nigga', 'Nogger', 'Nogga', 'Nagger', 'Nagga', 'Nugger', 'Nugga', 'Negger', 'Negga', 'Nikker', 'Nikka', 'Nixxer', 'Nixxa', 'N1g', 'Nig'); //list of n-bombs
+  let except = 'Night';
   let foundInText = false; //default text in messages (i.e. not an n-bomb)
   for (var i in blacklist) { //goes through each n-bomb in the list
     if (msg.content.toLowerCase().includes(blacklist[i].toLowerCase())) //if the message has one in it
       foundInText = true; //n-bomb confirmed
   }
-  if (foundInText) { //if n-bomb confirmed
+  if (msg.content.toLowerCase().includes(except.toLowerCase())) 
+    return;
+  else if (foundInText) { //if n-bomb confirmed
     msg.delete(); //gets rid of n-bomb message
-    msg.reply('Whoops! Try again, dumbass!'); //profit
+    msg.reply("Yikes! Let's not do that!"); //profit
   }
 });
