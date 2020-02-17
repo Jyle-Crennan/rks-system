@@ -109,17 +109,20 @@ toLower = function(x) {
   return x.toLowerCase();
 	
 };
+
 pokedex = pokedex.map(toLower);
 
 client.on('message', msg => {
 	
 	for (var i = 0; i <= pokedex.length; i++) {
 		
-		if (msg.author.id !== bot.user.id) {
+		if (msg.author.id !== client.user.id) {
 			
-			if (msg.content === '>' + pokedex[i]) {
+			if (msg.content === prefix + pokedex[i]) {
 				
 				msg.channel.send("https://pokemondb.net/pokedex/" + pokedex[i]);
+				
+				msg.delete();
 				
 			}
 			
@@ -152,7 +155,7 @@ client.on('message', msg => {
 		if (coin === 0)
 			msg.reply('Tails!');
 		
-		if (coin === 1)
+		else if (coin === 1)
 			msg.reply('Heads!');
 		
 	}
@@ -169,15 +172,15 @@ client.on('message', msg => {
 		
 		if (dice === 0)
 			msg.reply('You just rolled a 1. Neat.');
-		if (dice === 1)
+		else if (dice === 1)
 			msg.reply('You just rolled a 2. Cool.');
-		if (dice === 2)
+		else if (dice === 2)
 			msg.reply('You just rolled a 3. Swell.');
-		if (dice === 3)
+		else if (dice === 3)
 			msg.reply('You just rolled a 4. Great!');
-		if (dice === 4)
+		else if (dice === 4)
 			msg.reply('You just rolled a 5. Awesome!');
-		if (dice === 5)
+		else if (dice === 5)
 			msg.reply('You just rolled a 6. Fantastic!');
 		
 	}
@@ -308,7 +311,7 @@ client.on('message', msg => {
     .setTitle('Command List')
     .setColor(0x58ffe2)
     .addField("**>[pokemon name]**", "> Allows you to lookup any Pokemon that you specify through the Pokemon Database. Allows you to see the stats, movesets, and game locations for each Pokemon (up to Gen. 8)")
-    .addField("**>flip [# of flips]** or **>roll [# of sides]**", "> These commands act as randomizers. Whether you need to flip a coin and make a decision that way, or you just need a random number generator in the form of a die, these commands have you covered!")
+    .addField("**>flip** or **>roll [# of sides]**", "> These commands act as randomizers. Whether you need to flip a coin and make a decision that way, or you just need a random number generator in the form of a die, these commands have you covered!")
     .addField("**>help**", "> You're already looking at the command list, but if you didn't know, this command takes you to this very message. All of the commands that Mirage Ghost follows are listed here.")
     .addField("**>hey**", "> This acts as a testing command to see if Mirage Ghost is responsive, or to check if commands will interfere with each other.")
     .addField("**>joke**", "> I will tell you a random joke that I heard somewhere...don't remember where, though...and you probably won't laugh...but hey why not, right?")
