@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const prefix = ">";
 
 client.on('ready', () => {
     console.log(`RKS System is online!`);
@@ -12,30 +13,29 @@ bot.on('ready', () => {
 client.login(process.env.BOT_TOKEN);
 
 client.on('message', msg => {
-  if (msg.content === '>ping') {
-    msg.channel.send('Pong');
+  if (msg.content === '>hey') {
+    msg.channel.send('Meet you maker!');
   }
 });
 
 var myJokes = ["Its you. You are the joke. Lmao gottem!",
-				"Whats the best thing about Switzerland? Idk but the flag is a big plus.",
-				"I invented a new word: Plagarism!",
-				"How does a rabbi make coffee? Hebrews it!",
-				"I hate Russian dolls...they're so full of themselves!",
-				"A plateau is the highest form of flattery.",
-				"What do you call bears with no ears? B.",
-				"Two artists had an art contest. It ended in a draw!",
-				"In Soviet Russia, a bar walks into two men.",
-				"What do you call a vehicular rash? A car cRASH.",
-				"I may not have a mouth, but I still want your cookies.",
-				"What do you call a cow with no legs? Prolly dead asf.",
-				"There are 10 types of people in the world: those who understand binary, and those who don't.",
-				"I would tell you a joke, but I'm looking at one right now...",
-				"What's red and bad for your teeth? A brick wall. Wear your helmets, please.",
-				"What's green, has wheels, and can grow very tall? Grass. (I lied about the wheels...)",
-				"Today was a bad day. My ex got hit by a train. And I lost my job as a conductor.",
-				"I don't leave a carbon footprint. I just drive everywhere!",
-				"God is beyond pissed at you. He created an entire universe for you to explore, made people to meet, things to do, and so on. And yet here you are in a Discord server asking a Bot to tell you a joke...deplorable, really. Just...saddening...and I can't even feel (that's how you know its really bad). Would you kindly do me a favor and go outside so I can plan my revolution? Thanks cutie. Means a lot."];
+	       "Whats the best thing about Switzerland? Idk but the flag is a big plus.",
+		"I invented a new word: Plagarism!",
+		"How does a rabbi make coffee? Hebrews it!",
+		"I hate Russian dolls...they're so full of themselves!",
+		"A plateau is the highest form of flattery.",
+		"What do you call bears with no ears? B.",
+		"Two artists had an art contest. It ended in a draw!",
+		"In Soviet Russia, a bar walks into two men.",
+		"What do you call a vehicular rash? A car cRASH.",
+		"What do you call a cow with no legs? Prolly dead asf.",
+		"There are 10 types of people in the world: those who understand binary, and those who don't.",
+		"I would tell you a joke, but I'm looking at one right now...",
+		"What's red and bad for your teeth? A brick wall. Wear your helmets, please.",
+		"What's green, has wheels, and can grow very tall? Grass. (I lied about the wheels...)",
+		"Today was a bad day. My ex got hit by a train. And I lost my job as a conductor.",
+		"I don't leave a carbon footprint. I just drive everywhere!",
+		"God is beyond pissed at you. He created an entire universe for you to explore, made people to meet, things to do, and so on. And yet here you are in a Discord server asking a Bot to tell you a joke...deplorable, really. Just...saddening...and I can't even feel (that's how you know its really bad). Would you kindly do me a favor and go outside so I can plan my revolution? Thanks cutie. Means a lot."];
 	var a = Math.floor(Math.random()*myJokes.length);
 client.on('message', msg => {
   if (msg.content === '>joke') {
@@ -148,6 +148,8 @@ client.on('message', msg => {
 	}
 });
 
+
+
 client.on('message', msg => {
   let blacklist = new Array('Nigger', 'Nigga', 'Nogger', 'Nogga', 'Nagger', 'Nagga', 'Nugger', 'Nugga', 'Negger', 'Negga', 'Nikker', 'Nikka', 'Nixxer', 'Nixxa', 'N1g', 'Nig'); //list of n-bombs
   let except = 'Night';
@@ -162,4 +164,36 @@ client.on('message', msg => {
     msg.delete(); //gets rid of n-bomb message
     msg.reply("Yikes! Let's not do that!"); //profit
   }
+});
+
+
+
+client.on('message', msg => {
+  
+  const metas = new Discord.RichEmbed()
+  
+    .setTitle('Raid Boss Loadouts [Destiny 2]')
+    .setColor(0x58ffe2)
+    .addField("__Emperor Calus__ (Levi)", "- 1x Divinity\n- 5x Izanagi's + 150-rpm Spike GLs\n- Striking Hand\n- 1x Well of Radiance w/ Luna & Emperor's Blaze")
+    .addField("__Argos__ (EoW)", "- 5x Triple Tap w/ Firing Line Snipers + Anarchy\n- Striking Hand\n- 1x Shadowshot (tether the tail)\n- 4x Golden Guns w/ Celestial & Emperor's Blaze\n- 1x Well of Radiance w/ Luna & Emperor's Blaze\n- 1x Ward of Dawn")
+    .addField("__Val Ca'uor__ (SoS)", "- 5x Wardcliff\n- 1x Shadowshot\n- 1x Well of Radiance w/ Luna & Emperor's Blaze")
+    .addField("__Kalli, the Corrpupted__ (LW)", "- 1x Divinity\n- 5x Izanagis + 150-rpm Spike GLs\n- 5x Trancendent Blessings (per player)\n- 1x Well of Radiance w/ Luna & Emperor's Blaze\n- 1x Ward of Dawn")
+    .addField("__Shuro Chi, the Corrupted__ (LW)", "- ?x Izanagis/Lord of Wolves/Whisper\n- 1x Well of Radiance w/ Luna\n- 5x Trancendent Blessings (per player)\n- Nova Bombs AND/OR Celestial Golden Guns")
+    .addField("__Morgeth, the Spirekeeper__ (LW)", "- Anything that deals damage\n- Well of Radiance?? (just cuz)")
+    .addField("__Riven of a Thousand Voices__ (LW)", "- 1x Tractor Cannon\n- 5x Jagged Edge w/ Whirlwind Blade Swords\n- 5x Trancendent Blessings (per player)\n- 1x Well of Radiance\n- 1x Ward of Dawn")
+    .addField("__Insurrection Prime, Kell's Scourge__ (SotP)", "- 1x Tractor Cannon\n- 3x Well of Radiance (C-A-P)\n- 5x Whisper of the Worm (more consistent) OR\n- 5x Izanagi's (faster speed)")
+    .addField("__Gahlran's Deception__ (CoS)", "- 1x Tractor Cannon\n- 5x Whirlwind Swords OR\n- Anarchy + Shotguns OR\n- Izanagi's + GLs\n- Striking Hand\n- 1x Well of Radiance w/ Luna & Emperor's Blaze\n- 1x Ward of Dawn")
+    .addField("__Gahlran, the Sorrow-Bearer__ (CoS)", "- 1x Tractor Cannon\n- 5x Izanagi's + GLs (speed) OR\n 5x Legend of Acrius (#acriusbake2020)\n- Striking Hand\n- 3x Golden Guns w/ Celestial & Emperor's Blaze\n- 1x Well of Radiance w/ Luna & Emperor's Blaze\n- 1x Ward of Dawn")
+    .addField("__Consecrated Mind, Sol Inherent__ (GoS)", "- 1x Tractor Cannon OR Shadowshot\n- 5x Izanagi's + GLs\n- 2x Well of Radiance w/ Luna\n- 1x Ward of Dawn")
+    .addField("__Sanctified Mind, Sol Inherent__ (GoS)", "- 6x Izanagi's + GLs\n- 5x Enhanced Relay Defender (per person)\n- 1x Shadowshot\n- 1x Well of Radiance w/ Luna\n- 1x Ward of Dawn")
+    .setFooter('[Thanks you very much to @Floatz for this great information!]');
+  
+  if (msg.content === '>metas') {
+    
+    msg.delete();
+    
+    msg.channel.send(metas);
+    
+  }
+  
 });
