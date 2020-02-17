@@ -105,7 +105,7 @@ client.on('message', msg => {
 });
 
 client.on('guildMemberAdd', member => {
-	console.log('User ' + member.user.username + ' has joined The Foundation.')
+	console.log('User ' + member.user.username + ' has joined the server.')
 	var role = member.guild.roles.find('name', 'Personnel');
 	member.addRole(role)
 });
@@ -193,6 +193,83 @@ client.on('message', msg => {
     msg.delete();
     
     msg.channel.send(metas);
+    
+  }
+  
+});
+
+
+
+client.on('message', msg => {
+  
+  const args = msg.content.slice(prefix.length).split(/ +/);
+  
+  const command = args.shift().toLowerCase();
+  
+  if (!msg.content.startsWith(prefix) || msg.author.bot)
+    
+    return;
+	
+  else if (!msg.member.hasPermission('MANAGE_MESSAGES')) {
+
+    msg.channel.send('This action requires you to be able to have permission: MANAGE_MESSAGES');
+
+    msg.delete();
+
+  }
+  
+  else if (command === 'poll') {
+    
+    if (!args[0])
+      
+      msg.reply('Please include a question in your poll.');
+    
+    else {
+      
+      const poll = new Discord.RichEmbed()
+      
+        .setColor(0x58ffe2)
+        .setFooter('React to vote. Please do not add more reactions to the poll.')
+        .setDescription(args.join(' '))
+        .setTitle(`Poll Created by ${msg.author.username}`);
+      
+      msg.channel.send(poll)
+      
+        .then((newMessage) => {
+          newMessage.react('✅')
+          .then(newMessage.react('⛔'))
+        
+        });
+      
+      msg.delete({timeout: 1000});
+      
+    }
+    
+  }
+  
+});
+
+
+client.on('message', msg => {
+  
+  const helplist = new Discord.RichEmbed()
+  
+    .setTitle('Command List')
+    .setColor(0x58ffe2)
+    .addField("**>about**", "> View the clan's mission statement, in-game requirements in order to join, and the higher-ups in charge of everything. You can see more information not listed in the 'rules-and-regs' and 'announcements' chats.")
+    .addField("**>calc [x] [y] [z]**", "> Serves as a damage calculator that simply takes in a damage value (x), the weapon type (y), and the weapon's fire rate (z) which will return the potential DPS yield for the weapon. Also, a list of other factors will be included, such as Luna Well, applied debuffs, and perks unique to the weapon type.\n[COMING SOON]")
+    .addField("**>help**", "> You're already looking at the command list, but if you didn't know, this command takes you to this very message. All of the commands that Mirage Ghost follows are listed here.")
+    .addField("**>hey**", "> This acts as a testing command to see if Mirage Ghost is responsive, or to check if commands will interfere with each other.")
+    .addField("**>metas**", "> View all of the best loadouts for each raid boss in the game, which includes the Supers, weapons, Exotics, and mods for each member to have the most ideal run for easy clears.")
+    .addField("**>poll [question]** *(Admin Only)*", "> Set up a yes or no answer questionairre for members to submit their response to as a vote in the form of reactions. To use properly, type your question after the command in the same message.")
+    .setThumbnail(client.user.avatarURL)
+    .setFooter('[If a command listed says it is coming soon, it does not work and will be implemeted at a later date. Thank you for your patience. ~Jy1e]');
+  
+  if (msg.content === '>help') {
+    
+    msg.delete();
+    
+    msg.channel.send(helplist);
     
   }
   
