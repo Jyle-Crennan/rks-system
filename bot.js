@@ -14,6 +14,7 @@ client.login(process.env.BOT_TOKEN);
 
 client.on('message', msg => {
   if (msg.content === '>hey') {
+    msg.delete();
     msg.channel.send('Meet you maker!');
   }
 });
@@ -44,6 +45,8 @@ const myJokes = ["Its you. You are the joke. Lmao gottem!",
 client.on('message', msg => {
 	
   if (msg.content === '>joke') {
+		
+		msg.delete();
 	  
     msg.channel.send(myJokes[a]);
 	  
@@ -170,15 +173,15 @@ client.on('message', msg => {
 		
 		if (dice === 0)
 			msg.reply('You just rolled a 1. Neat.');
-		else if (dice === 1)
+		if (dice === 1)
 			msg.reply('You just rolled a 2. Cool.');
-		else if (dice === 2)
+		if (dice === 2)
 			msg.reply('You just rolled a 3. Swell.');
-		else if (dice === 3)
+		if (dice === 3)
 			msg.reply('You just rolled a 4. Great!');
-		else if (dice === 4)
+		if (dice === 4)
 			msg.reply('You just rolled a 5. Awesome!');
-		else if (dice === 5)
+		if (dice === 5)
 			msg.reply('You just rolled a 6. Fantastic!');
 		
 	}
