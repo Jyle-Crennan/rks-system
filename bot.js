@@ -21,7 +21,7 @@ client.on('message', msg => {
 
 
 const myJokes = ["Its you. You are the joke. Lmao gottem!",
-	       "Whats the best thing about Switzerland? Idk but the flag is a big plus.",
+	  "Whats the best thing about Switzerland? Idk but the flag is a big plus.",
 		"I invented a new word: Plagarism!",
 		"How does a rabbi make coffee? Hebrews it!",
 		"I hate Russian dolls...they're so full of themselves!",
@@ -47,7 +47,7 @@ client.on('message', msg => {
 	  
     msg.channel.send(myJokes[a]);
 	  
-	a = Math.floor(Math.random()*myJokes.length);
+		a = Math.floor(Math.random()*myJokes.length);
 	  
   }
 	
@@ -134,11 +134,11 @@ client.on('message', msg => {
 
 client.on('guildMemberAdd', member => {
 	
-	console.log('User ' + member.user.username + ' has joined the server.')
+	console.log('User ' + member.user.username + ' has joined the server.');
 	
 	var role = member.guild.roles.find('name', 'Personnel');
 	
-	member.addRole(role)
+	member.addRole(role);
 	
 });
 
