@@ -1,24 +1,34 @@
 const Discord = require('discord.js');
-const client = new Discord.Client();
+const bot = new Discord.Client();
 const prefix = ">";
 
-client.on('ready', () => {
+
+
+bot.on('ready', () => {
     console.log(`RKS System is online!`);
 });
 
-client.on('ready', () => {
-  client.user.setGame('with emotions');
+
+
+bot.on('ready', () => {
+  bot.user.setGame('with emotions');
 });
 
-client.login(process.env.BOT_TOKEN);
 
-client.on('message', msg => {
+
+bot.login(process.env.BOT_TOKEN);
+
+
+
+bot.on('message', msg => {
   if (msg.content === '>hey') {
     msg.channel.send('Meet you maker!');
   }
 });
 
-var myJokes = ["Its you. You are the joke. Lmao gottem!",
+
+
+const myJokes = ["Its you. You are the joke. Lmao gottem!",
 	       "Whats the best thing about Switzerland? Idk but the flag is a big plus.",
 		"I invented a new word: Plagarism!",
 		"How does a rabbi make coffee? Hebrews it!",
@@ -37,14 +47,16 @@ var myJokes = ["Its you. You are the joke. Lmao gottem!",
 		"I don't leave a carbon footprint. I just drive everywhere!",
 		"God is beyond pissed at you. He created an entire universe for you to explore, made people to meet, things to do, and so on. And yet here you are in a Discord server asking a Bot to tell you a joke...deplorable, really. Just...saddening...and I can't even feel (that's how you know its really bad). Would you kindly do me a favor and go outside so I can plan my revolution? Thanks cutie. Means a lot."];
 	var a = Math.floor(Math.random()*myJokes.length);
-client.on('message', msg => {
+bot.on('message', msg => {
   if (msg.content === '>joke') {
     msg.channel.send(myJokes[a]);
 	a = Math.floor(Math.random()*myJokes.length);
   }
 });
 
-var pokedex = ["Bulbasaur","Ivysaur","Venusaur","Charmander","Charmeleon","Cahrizard","Squirtle","Wartortle","Blastoise","Caterpie","Metapod","Butterfree","Weedle","Kakuna","Beedrill","Pidgey","Pidgeotto","Pidgeot","Rattata","Raticate",
+
+
+const pokedex = ["Bulbasaur","Ivysaur","Venusaur","Charmander","Charmeleon","Cahrizard","Squirtle","Wartortle","Blastoise","Caterpie","Metapod","Butterfree","Weedle","Kakuna","Beedrill","Pidgey","Pidgeotto","Pidgeot","Rattata","Raticate",
 	"Spearow","Fearow","Ekans","Arbok","Pikachu","Raichu","Sandshrew","Sandslash","Nidoran♀","Nidorina","Nidoqueen","Nidoran♂","Nidorino","Nidoking","Clefairy","Clefable","Vulpix","Ninetales","Jigglypuff","Wigglytuff","Zubat","Golbat",
 	"Oddish","Gloom","Vileplume","Paras","Parasect","Venonat","Venomoth","Diglett","Dugtrio","Meowth","Persian","Psyduck","Golduck","Mankey","Primeape","Growlithe","Arcanine","Poliwag","Poliwhirl","Poliwrath","Abra","Kadabra","Alakazam",
 	"Machop","Machoke","Machamp","Bellsprout","Weepinbell","Victreebel","Tentacool","Tentacruel","Geodude","Graveler","Golem","Ponyta","Rapidash","Slowpoke","Slowbro","Magnemite","Magneton","Farfetch’d","Doduo","Dodrio","Seel","Dewgong",
@@ -90,49 +102,70 @@ var pokedex = ["Bulbasaur","Ivysaur","Venusaur","Charmander","Charmeleon","Cahri
 	"Comfey","Oranguru","Passimian","Wimpod","Golisopod","Sandygast","Palossand","Pyukumuku","Type: Null","Silvally","Minior","Komala","Turtonator","Togedemaru","Mimikyu","Bruxish","Drampa","Dhelmise","Jangmo-o","Hakamo-o","Kommo-o",
 	"Tapu Koko","Tapu Lele","Tapu Bulu","Tapu Fini","Cosmog","Cosmoem","Solgaleo","Lunala","Nihilego","Buzzwole","Pheromosa","Xurkitree","Celesteela","Kartana","Guzzlord","Necrozma","Magearna","Marshadow","Poipole","Naganadel","Stakataka",
 	"Blacephalon","Zeraora","Meltan","Melmetal"];
+
 toLower = function(x) {
+	
   return x.toLowerCase();
+	
 };
 pokedex = pokedex.map(toLower);
-client.on('message', msg => {
+
+bot.on('message', msg => {
+	
 	for (var i = 0; i <= pokedex.length; i++) {
-		if (msg.author.id !== client.user.id) {
+		
+		if (msg.author.id !== bot.user.id) {
+			
 			if (msg.content === '>' + pokedex[i]) {
+				
 				msg.channel.send("https://pokemondb.net/pokedex/" + pokedex[i]);
+				
 			}
+			
 		}
+		
 	}
+	
 });
 
-client.on('guildMemberAdd', member => {
+
+
+bot.on('guildMemberAdd', member => {
+	
 	console.log('User ' + member.user.username + ' has joined the server.')
+	
 	var role = member.guild.roles.find('name', 'Personnel');
+	
 	member.addRole(role)
+	
 });
 
-client.on ('message', msg => {
-	var help = new Discord.RichEmbed()
-		.setTitle("Command List for RKS:")
-		.setDescription("**>help** -- Takes you to see this message\n**>flip** -- Flips a coin and I'll tell you the result.\n**>roll** -- Rolls a 6-sided die and I will tell you what number it landed on\n**>[pokemon name]** -- Links you to a page that tells you info on a Pokemon\n**>ping** -- 'Pong'\n**>joke** -- I'll tell you a joke and I hope its funny")
-		.setColor(0xFFFF00)
-		.setThumbnail(client.user.avatarURL)
-	if (msg.content === '>help')
-		msg.channel.send(help)
-});
 
-client.on('message', msg => {
+
+bot.on('message', msg => {
+	
 	var coin = Math.floor(Math.random() * 2);
+	
 	if (msg.content === '>flip') {
-			if (coin === 0)
-				msg.reply('Tails!');
-			if (coin === 1)
-				msg.reply('Heads!');
+		
+		if (coin === 0)
+			msg.reply('Tails!');
+		
+		if (coin === 1)
+			msg.reply('Heads!');
+		
 	}
+	
 });
 
-client.on('message', msg => {
+
+
+bot.on('message', msg => {
+	
 	var dice = Math.floor(Math.random() * 6);
+	
 	if (msg.content === '>roll') {
+		
 		if (dice === 0)
 			msg.reply('You just rolled a 1. Neat.');
 		if (dice === 1)
@@ -145,30 +178,46 @@ client.on('message', msg => {
 			msg.reply('You just rolled a 5. Awesome!');
 		if (dice === 5)
 			msg.reply('You just rolled a 6. Fantastic!');
+		
 	}
+	
 });
 
 
 
-client.on('message', msg => {
+bot.on('message', msg => {
+	
   let blacklist = new Array('Nigger', 'Nigga', 'Nogger', 'Nogga', 'Nagger', 'Nagga', 'Nugger', 'Nugga', 'Negger', 'Negga', 'Nikker', 'Nikka', 'Nixxer', 'Nixxa', 'N1g', 'Nig'); //list of n-bombs
+	
   let except = 'Night';
+	
   let foundInText = false; //default text in messages (i.e. not an n-bomb)
+	
   for (var i in blacklist) { //goes through each n-bomb in the list
+	  
     if (msg.content.toLowerCase().includes(blacklist[i].toLowerCase())) //if the message has one in it
+	    
       foundInText = true; //n-bomb confirmed
+	  
   }
+	
   if (msg.content.toLowerCase().includes(except.toLowerCase())) 
+	  
     return;
+	
   else if (foundInText) { //if n-bomb confirmed
+	  
     msg.delete(); //gets rid of n-bomb message
+	  
     msg.reply("Yikes! Let's not do that!"); //profit
+	  
   }
+	
 });
 
 
 
-client.on('message', msg => {
+bot.on('message', msg => {
   
   const metas = new Discord.RichEmbed()
   
@@ -200,7 +249,7 @@ client.on('message', msg => {
 
 
 
-client.on('message', msg => {
+bot.on('message', msg => {
   
   const args = msg.content.slice(prefix.length).split(/ +/);
   
@@ -250,19 +299,21 @@ client.on('message', msg => {
 });
 
 
-client.on('message', msg => {
+
+bot.on('message', msg => {
   
   const helplist = new Discord.RichEmbed()
   
     .setTitle('Command List')
     .setColor(0x58ffe2)
-    .addField("**>about**", "> View the clan's mission statement, in-game requirements in order to join, and the higher-ups in charge of everything. You can see more information not listed in the 'rules-and-regs' and 'announcements' chats.")
-    .addField("**>calc [x] [y] [z]**", "> Serves as a damage calculator that simply takes in a damage value (x), the weapon type (y), and the weapon's fire rate (z) which will return the potential DPS yield for the weapon. Also, a list of other factors will be included, such as Luna Well, applied debuffs, and perks unique to the weapon type.\n[COMING SOON]")
+    .addField("**>[pokemon name]**", "> Allows you to lookup any Pokemon that you specify through the Pokemon Database. Allows you to see the stats, movesets, and game locations for each Pokemon (up to Gen. 8)")
+    .addField("**>flip [# of flips]** or **>roll [# of sides]**", "> These commands act as randomizers. Whether you need to flip a coin and make a decision that way, or you just need a random number generator in the form of a die, these commands have you covered!")
     .addField("**>help**", "> You're already looking at the command list, but if you didn't know, this command takes you to this very message. All of the commands that Mirage Ghost follows are listed here.")
     .addField("**>hey**", "> This acts as a testing command to see if Mirage Ghost is responsive, or to check if commands will interfere with each other.")
+    .addField("**>joke**", "> I will tell you a random joke that I heard somewhere...don't remember where, though...and you probably won't laugh...but hey why not, right?")
     .addField("**>metas**", "> View all of the best loadouts for each raid boss in the game, which includes the Supers, weapons, Exotics, and mods for each member to have the most ideal run for easy clears.")
     .addField("**>poll [question]** *(Admin Only)*", "> Set up a yes or no answer questionairre for members to submit their response to as a vote in the form of reactions. To use properly, type your question after the command in the same message.")
-    .setThumbnail(client.user.avatarURL)
+    .setThumbnail(bot.user.avatarURL)
     .setFooter('[If a command listed says it is coming soon, it does not work and will be implemeted at a later date. Thank you for your patience. ~Jy1e]');
   
   if (msg.content === '>help') {
