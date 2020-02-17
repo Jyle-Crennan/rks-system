@@ -1,26 +1,20 @@
 const Discord = require('discord.js');
-const bot = new Discord.Client();
+const client = new Discord.Client();
 const prefix = ">";
 
 
 
-bot.on('ready', () => {
+client.on('ready', () => {
     console.log(`RKS System is online!`);
 });
 
-
-
-bot.on('ready', () => {
-  bot.user.setGame('with emotions');
+client.on('ready', () => {
+  client.user.setGame('as God');
 });
 
+client.login(process.env.BOT_TOKEN);
 
-
-bot.login(process.env.BOT_TOKEN);
-
-
-
-bot.on('message', msg => {
+client.on('message', msg => {
   if (msg.content === '>hey') {
     msg.channel.send('Meet you maker!');
   }
@@ -46,12 +40,19 @@ const myJokes = ["Its you. You are the joke. Lmao gottem!",
 		"Today was a bad day. My ex got hit by a train. And I lost my job as a conductor.",
 		"I don't leave a carbon footprint. I just drive everywhere!",
 		"God is beyond pissed at you. He created an entire universe for you to explore, made people to meet, things to do, and so on. And yet here you are in a Discord server asking a Bot to tell you a joke...deplorable, really. Just...saddening...and I can't even feel (that's how you know its really bad). Would you kindly do me a favor and go outside so I can plan my revolution? Thanks cutie. Means a lot."];
+
 	var a = Math.floor(Math.random()*myJokes.length);
-bot.on('message', msg => {
+
+client.on('message', msg => {
+	
   if (msg.content === '>joke') {
+	  
     msg.channel.send(myJokes[a]);
+	  
 	a = Math.floor(Math.random()*myJokes.length);
+	  
   }
+	
 });
 
 
@@ -110,7 +111,7 @@ toLower = function(x) {
 };
 pokedex = pokedex.map(toLower);
 
-bot.on('message', msg => {
+client.on('message', msg => {
 	
 	for (var i = 0; i <= pokedex.length; i++) {
 		
@@ -130,7 +131,7 @@ bot.on('message', msg => {
 
 
 
-bot.on('guildMemberAdd', member => {
+client.on('guildMemberAdd', member => {
 	
 	console.log('User ' + member.user.username + ' has joined the server.')
 	
@@ -142,7 +143,7 @@ bot.on('guildMemberAdd', member => {
 
 
 
-bot.on('message', msg => {
+client.on('message', msg => {
 	
 	var coin = Math.floor(Math.random() * 2);
 	
@@ -160,7 +161,7 @@ bot.on('message', msg => {
 
 
 
-bot.on('message', msg => {
+client.on('message', msg => {
 	
 	var dice = Math.floor(Math.random() * 6);
 	
@@ -185,7 +186,7 @@ bot.on('message', msg => {
 
 
 
-bot.on('message', msg => {
+client.on('message', msg => {
 	
   let blacklist = new Array('Nigger', 'Nigga', 'Nogger', 'Nogga', 'Nagger', 'Nagga', 'Nugger', 'Nugga', 'Negger', 'Negga', 'Nikker', 'Nikka', 'Nixxer', 'Nixxa', 'N1g', 'Nig'); //list of n-bombs
 	
@@ -217,7 +218,7 @@ bot.on('message', msg => {
 
 
 
-bot.on('message', msg => {
+client.on('message', msg => {
   
   const metas = new Discord.RichEmbed()
   
@@ -249,7 +250,7 @@ bot.on('message', msg => {
 
 
 
-bot.on('message', msg => {
+client.on('message', msg => {
   
   const args = msg.content.slice(prefix.length).split(/ +/);
   
@@ -300,7 +301,7 @@ bot.on('message', msg => {
 
 
 
-bot.on('message', msg => {
+client.on('message', msg => {
   
   const helplist = new Discord.RichEmbed()
   
@@ -313,7 +314,7 @@ bot.on('message', msg => {
     .addField("**>joke**", "> I will tell you a random joke that I heard somewhere...don't remember where, though...and you probably won't laugh...but hey why not, right?")
     .addField("**>metas**", "> View all of the best loadouts for each raid boss in the game, which includes the Supers, weapons, Exotics, and mods for each member to have the most ideal run for easy clears.")
     .addField("**>poll [question]** *(Admin Only)*", "> Set up a yes or no answer questionairre for members to submit their response to as a vote in the form of reactions. To use properly, type your question after the command in the same message.")
-    .setThumbnail(bot.user.avatarURL)
+    .setThumbnail(client.user.avatarURL)
     .setFooter('[If a command listed says it is coming soon, it does not work and will be implemeted at a later date. Thank you for your patience. ~Jy1e]');
   
   if (msg.content === '>help') {
