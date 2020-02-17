@@ -2,8 +2,6 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const prefix = ">";
 
-
-
 client.on('ready', () => {
     console.log(`RKS System is online!`);
 });
@@ -104,7 +102,7 @@ const pokedex = ["Bulbasaur","Ivysaur","Venusaur","Charmander","Charmeleon","Cah
 	"Tapu Koko","Tapu Lele","Tapu Bulu","Tapu Fini","Cosmog","Cosmoem","Solgaleo","Lunala","Nihilego","Buzzwole","Pheromosa","Xurkitree","Celesteela","Kartana","Guzzlord","Necrozma","Magearna","Marshadow","Poipole","Naganadel","Stakataka",
 	"Blacephalon","Zeraora","Meltan","Melmetal"];
 
-toLower = function(x) {
+const toLower = function(x) {
 	
   return x.toLowerCase();
 	
