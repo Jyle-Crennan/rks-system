@@ -6,8 +6,8 @@ client.on('ready', () => {
     console.log(`RKS System is online!`);
 });
 
-bot.on('ready', () => {
-  bot.user.setGame('with emotions');
+client.on('ready', () => {
+  client.user.setGame('with emotions');
 });
 
 client.login(process.env.BOT_TOKEN);
