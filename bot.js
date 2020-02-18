@@ -21,7 +21,7 @@ client.on('message', msg => {
 
 
 
-const myJokes = ["Its you. You are the joke. Lmao gottem!",
+var myJokes = ["Its you. You are the joke. Lmao gottem!",
 	  "Whats the best thing about Switzerland? Idk but the flag is a big plus.",
 		"I invented a new word: Plagarism!",
 		"How does a rabbi make coffee? Hebrews it!",
@@ -58,7 +58,7 @@ client.on('message', msg => {
 
 
 
-const pokedex = ["Bulbasaur","Ivysaur","Venusaur","Charmander","Charmeleon","Cahrizard","Squirtle","Wartortle","Blastoise","Caterpie","Metapod","Butterfree","Weedle","Kakuna","Beedrill","Pidgey","Pidgeotto","Pidgeot","Rattata","Raticate",
+var pokedex = ["Bulbasaur","Ivysaur","Venusaur","Charmander","Charmeleon","Cahrizard","Squirtle","Wartortle","Blastoise","Caterpie","Metapod","Butterfree","Weedle","Kakuna","Beedrill","Pidgey","Pidgeotto","Pidgeot","Rattata","Raticate",
 	"Spearow","Fearow","Ekans","Arbok","Pikachu","Raichu","Sandshrew","Sandslash","Nidoran♀","Nidorina","Nidoqueen","Nidoran♂","Nidorino","Nidoking","Clefairy","Clefable","Vulpix","Ninetales","Jigglypuff","Wigglytuff","Zubat","Golbat",
 	"Oddish","Gloom","Vileplume","Paras","Parasect","Venonat","Venomoth","Diglett","Dugtrio","Meowth","Persian","Psyduck","Golduck","Mankey","Primeape","Growlithe","Arcanine","Poliwag","Poliwhirl","Poliwrath","Abra","Kadabra","Alakazam",
 	"Machop","Machoke","Machamp","Bellsprout","Weepinbell","Victreebel","Tentacool","Tentacruel","Geodude","Graveler","Golem","Ponyta","Rapidash","Slowpoke","Slowbro","Magnemite","Magneton","Farfetch’d","Doduo","Dodrio","Seel","Dewgong",
@@ -105,7 +105,7 @@ const pokedex = ["Bulbasaur","Ivysaur","Venusaur","Charmander","Charmeleon","Cah
 	"Tapu Koko","Tapu Lele","Tapu Bulu","Tapu Fini","Cosmog","Cosmoem","Solgaleo","Lunala","Nihilego","Buzzwole","Pheromosa","Xurkitree","Celesteela","Kartana","Guzzlord","Necrozma","Magearna","Marshadow","Poipole","Naganadel","Stakataka",
 	"Blacephalon","Zeraora","Meltan","Melmetal"];
 
-const toLower = function(x) {
+var toLower = function(x) {
 	
   return x.toLowerCase();
 	
