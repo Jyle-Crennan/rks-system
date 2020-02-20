@@ -314,7 +314,7 @@ client.on('message', msg => {
     .addField("**>[pokemon name]**", "> Allows you to lookup any Pokemon that you specify through the Pokemon Database. Allows you to see the stats, movesets, and game locations for each Pokemon (up to Gen. 8)")
     .addField("**>flip** or **>roll [# of sides]**", "> These commands act as randomizers. Whether you need to flip a coin and make a decision that way, or you just need a random number generator in the form of a die, these commands have you covered!")
     .addField("**>help**", "> You're already looking at the command list, but if you didn't know, this command takes you to this very message. All of the commands that Mirage Ghost follows are listed here.")
-    .addField("**>hey**", "> This acts as a testing command to see if Mirage Ghost is responsive, or to check if commands will interfere with each other.")
+    .addField("**>hey**", "> This acts as a testing command to see if RKS is responsive, or to check if commands will interfere with each other.")
     .addField("**>joke**", "> I will tell you a random joke that I heard somewhere...don't remember where, though...and you probably won't laugh...but hey why not, right?")
     .addField("**>metas**", "> View all of the best loadouts for each raid boss in the game, which includes the Supers, weapons, Exotics, and mods for each member to have the most ideal run for easy clears.")
     .addField("**>poll [question]** *(Admin Only)*", "> Set up a yes or no answer questionairre for members to submit their response to as a vote in the form of reactions. To use properly, type your question after the command in the same message.")
