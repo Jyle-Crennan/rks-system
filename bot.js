@@ -17,6 +17,10 @@ client.on('message', msg => {
     msg.delete();
     msg.channel.send('Meet you maker!');
   }
+  else if (msg.content === '>abra') {
+    msg.delete();
+    msg.channel.send('Kadabra!');
+  }
 });
 
 
